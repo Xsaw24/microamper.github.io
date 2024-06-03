@@ -1,0 +1,483 @@
+<!-- inject:partials/header.html -->
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <title>Microamper | Industrial</title>
+    <link rel="shortcut icon" href="assets/img/MAlogokk.png">
+
+    <!-- build:css -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- endbuild -->
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+      
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      
+    <link rel="stylesheet" href="assets/css/theme.css">
+      
+  </head>
+
+  <body>      
+      
+    <nav class="navbar navbar-expand-md navbar-custom fixed-top">
+        <div class="container">
+			<style>
+				.navbar-brand {
+					display: flex;
+					align-items: center; /* Centraliza verticalmente o ícone e o texto */
+				}
+			
+				.icone {
+					width: 20px; /* ajuste o tamanho conforme necessário */
+					height: auto; /* isso manterá a proporção original */
+					margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+				}
+				.nav-link-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    margin-right: 10px; /* Ajuste o espaçamento conforme necessário */
+}
+			</style>
+			
+			<a class="navbar-brand" href="index.html"><img class="icone" src="assets/img/MAlogokk.png" alt="Ícone">Microamper</a>
+
+            <button class="navbar-light navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsDefault">
+                <ul class="navbar-custom navbar-nav ml-auto">
+                    
+                    <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    
+                    <li class="nav-item">
+                    <a class="nav-link" href="sobre.html">Sobre
+					</a>
+                    </li>
+   
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">O que fazemos?</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">                        
+                        <a class="dropdown-item" href="industria.html">Industria</a>
+                        <a class="dropdown-item" href="comercial.html">Comercial</a>
+                        <a class="dropdown-item" href="resid.html">Residencial/Escritórios</a>
+						<a class="dropdown-item" href="teleco.html">Telecomunicações</a>
+                        </div>
+                    </li>	
+                    
+                    <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contacte nos</a>
+                    </li>
+                    
+					<li class="nav-item">
+                        <a href="#" class="nav-link" id="loginLogoutButton" onclick="showLoginPopup()">Login</a>
+                    </div>
+                </li>
+					
+<!-- Pop-up de login -->
+<div id="login-popup" class="login-popup">
+    <div class="login-popup-content">
+        <span class="close" onclick="closeLoginPopup()">&times;</span>
+        <h2>Login</h2>
+        <!-- Formulário de login -->
+        <div class="login-popup-content">
+            <form method="POST" action="autenticautilizador.php">
+                <label for="email">E-mail:</label>
+                <input type="text" id="email" name="email">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha">
+                <div class="button-container">
+                    <input class="login" type="submit" value="Login">
+                </div>
+                <a class="nao-tem-conta" href="#" onclick="openRegisterPopup()">Não tem conta?</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Pop-up de registro -->
+<div id="register-popup" class="register-popup" style="display: none;">
+    <div class="register-popup-content">
+        <span class="close" onclick="closeRegisterPopup()">&times;</span>
+        <h2>Registro</h2>
+        <!-- Formulário de registro -->
+        <div class="register-popup-content">
+            <form method="POST" action="insirautilizador.php">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome">
+                <label for="email">E-mail:</label>
+                <input type="text" id="email" name="email">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha">
+                <div class="button-container">
+                    <input class="register" type="submit" value="Registrar">
+                </div>
+                <a href="#" class="forgot">Esqueceu a senha?</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+.forgot {
+    text-align: center; /* Centraliza o texto horizontalmente */
+    margin-top: 20px; /* Adiciona um espaçamento acima do texto */
+    margin-bottom: 10px; /* Adiciona um espaçamento abaixo do texto */
+    color: #000000; /* Cor do texto preto */
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+    .login-popup {
+
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: #00000080;
+    }
+
+    .login-popup-content {
+        background-color: #fefefe;
+		color:#000000;
+        margin: 10% auto;
+        padding: 50px;
+        border: 1px solid #888;	
+        width: 100%;
+        max-width: 400px;
+        border-radius: 15px;
+    }
+	
+	.login{
+		width: 45%;
+		width: 40%;
+  		text-align: center;
+		margin-top: 20px;
+  		padding: 5px 10px;
+  		background-color: #ff7300;
+ 		color: white;
+  		border: none;
+  		cursor: pointer;
+		margin-top: 10px; /* Adiciona um espaçamento acima do texto */
+    	text-align: center;
+	}
+
+	.nao-tem-conta {
+    	margin-top: 10px; /* Adiciona um espaçamento acima do texto */
+    	text-align: center; /* Centraliza o texto horizontalmente */
+    	color: #000000; /* Cor do texto preto */
+	}
+
+
+    .close {
+        color: #000000;
+        float: right;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover {	
+        color: black;
+        text-decoration: none;
+    }
+                   </style>
+            </ul>              
+        </div>
+    </div>
+</nav>
+<!-- endinject -->
+
+<!-- endinject -->
+
+<!-- Intro -->
+<div class="intro">
+<div class="intro-body">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<h1 class="brand-heading">Industrial</h1>
+				<p class="intro-text">                  				
+                   Microamper                
+				</p>
+				<a href="#pageid" class="btn btn-circle page-scroll">
+				<i class="fa fa-angle-double-down animated"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- Section -->
+<section id="pageid">
+<div class="container content-section">
+	<div class="row">
+		<div class="col-md-8">
+            <h2>Industrial</h2>
+            
+            <p></p>
+            
+            <p><img src="assets/img/.jpg"></p>
+            
+			<p></p>
+
+            <p></p>
+            
+            <!-- Portfolio -->
+            <section id="portfolio">
+                <div class="gallery">
+                    <ul class="row">
+                        <li class="col-md-3 custom-gallery-item">
+                                <div class="image-container">
+                                    <img src="assets/img/.jpg" alt="" width="350px" height="500px">
+                                    <p>
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                   </ul>
+                </div>
+		    </div>
+
+    <style>/* Estilo para os contêineres de imagem na galeria */
+        .image-container {
+            width: 90%;
+            height: 250px; /* Altura fixa para os contêineres de imagem */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+            border: 2px solid #ff8800; /* Borda */
+            padding: 10px; /* Espaçamento interno */
+            margin-bottom: 50px; /* Espaçamento entre as imagens */
+            overflow: hidden; /* Para cortar imagens maiores */
+        }
+    
+        /* Estilo para as imagens na galeria */
+        .custom-gallery-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover; /* Para garantir que a imagem cubra todo o contêiner */
+        }
+    </style>
+                     
+                <div class="widget">
+                    <ul class="list-unstyled text-small">
+                    <h6>O que fazemos?</h6>
+                    <li><a href="comercial.html">Comercial</a></li>
+                    <li><a href="resid.html">Residencial/Escritórios</a></li>
+                    <li><a href="teleco.html">Telecomunicações</a></li>
+                    </ul>
+                </div>
+                
+                
+            </div>
+        </div>
+	</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer background-color-custom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-color-custom">Informações</h4>
+                <ul>
+					<li><a href="" class="text-color-custom">+351 22 324 9747</li>
+                    <li><a href="mailto:geral@microamper.pt" class="text-color-custom">geral@microamper.pt</a></li>
+					<li><a href="" class="text-color-custom"></li>
+                </ul>
+                <!-- Ícones de redes sociais -->
+                <ul class="social-icons">
+                    <li><a href="https://www.facebook.com/MicroamperLda/?locale=pt_PT"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/?lang=pt"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
+                    <!-- Adicione mais ícones conforme necessário -->
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h4>Localização</h4>
+                <!-- Embed do Google Maps sem chave de API -->
+                <div class="map-responsive">
+                    <iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=41.293180,-8.464673&output=embed"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<style>
+    /* Estilos para tornar o mapa responsivo */
+    .map-responsive {
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        position: relative;
+        height: 0;
+    }
+
+    .map-responsive iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+	.text-color-custom {
+    color: #000000; /* Cor personalizada - vermelho neste exemplo */
+}
+.background-color-custom {
+    background-color: #ffffff; /* Cor personalizada - amarelo neste exemplo */
+}
+.social-icons a {
+    color: #000000; /* Cor azul neste exemplo */
+    font-size: 24px; /* Tamanho do ícone */
+    margin-right: 10px; /* Espaçamento entre os ícones */
+}
+.social-icons li {
+    display: inline-block; /* Exibe os ícones lado a lado */
+    margin-right: 10px; /* Espaçamento entre os ícones */
+}
+.register-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #00000080;
+}
+
+.register-popup-content {
+    background-color: #fefefe;
+    color: #000000;
+    margin: 10% auto;
+    padding: 50px;
+    border: 1px solid #888;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+}
+
+.register-popup-content label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.register-popup-content input[type="text"],
+.register-popup-content input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff7300;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.close {
+    color: #000000;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+    text-decoration: none;
+}
+
+</style>
+
+<!-- inject:partials/footer.html -->
+<footer>
+<div class="container text-center">
+    <p class="credits">
+        André Silva &copy; Microamper 2024<br/>
+        <a class="highlightlink" target="_blank" href="index.html">Microamper, LDA</a>
+    </p>
+</div>
+</footer>
+
+<!-- build:js -->
+<script src="assets/js/main.js"></script>
+<!-- endbuild -->
+
+<script src="assets/js/theme.js"></script>
+
+<script>
+    function showLoginPopup() {
+        document.getElementById('login-popup').style.display = 'block';
+    }
+
+    function closeLoginPopup() {
+        document.getElementById('login-popup').style.display = 'none';
+    }
+</script>
+<script>
+    function openRegisterPopup() {
+        document.getElementById("register-popup").style.display = "block";
+    }
+
+    function closeRegisterPopup() {
+        document.getElementById("register-popup").style.display = "none";
+    }
+</script>
+<script>
+function openRegisterPopup() {
+    document.getElementById("login-popup").style.display = "none";
+    document.getElementById("register-popup").style.display = "block";
+}
+
+function closeRegisterPopup() {
+    document.getElementById("register-popup").style.display = "none";
+}
+</script>
+
+
+</body>
+
+</html>
+<!-- endinject -->
